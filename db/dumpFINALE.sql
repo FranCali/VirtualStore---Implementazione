@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.7.18, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: storedb
+-- Host: 127.0.0.1    Database: storedb
 -- ------------------------------------------------------
 -- Server version	5.7.18-log
 
@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account` (
-  `email` int(11) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `idcliente` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `idcliente` int(11) DEFAULT NULL,
   PRIMARY KEY (`email`),
-  KEY `idcliente` (`idcliente`),
+  KEY `idcliente_idx` (`idcliente`),
   CONSTRAINT `account_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,6 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES ('francesco.califano96@yahoo.it','11e3e073d82b5236e1bdbcfcfdafa9ff5c5cb08a',26),('mario@yahoo.it','11e3e073d82b5236e1bdbcfcfdafa9ff5c5cb08a',28),('michele.spano@yahoo.it','11e3e073d82b5236e1bdbcfcfdafa9ff5c5cb08a',27);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,10 +52,10 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcliente` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`idcliente`),
   KEY `idcliente_idx` (`idcliente`),
-  CONSTRAINT `idcliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `idcliente` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +64,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (2,26);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,7 +80,7 @@ CREATE TABLE `cliente` (
   `nome` varchar(45) NOT NULL,
   `cognome` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,6 +89,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (26,'Francesco','Califano'),(27,'Michele','Spano'),(28,'Mario','Ruggiero');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,8 +135,7 @@ DROP TABLE IF EXISTS `listadesideri`;
 CREATE TABLE `listadesideri` (
   `email_utente` varchar(50) NOT NULL,
   PRIMARY KEY (`email_utente`),
-  KEY `email_utente` (`email_utente`),
-  CONSTRAINT `listadesideri_ibfk_1` FOREIGN KEY (`email_utente`) REFERENCES `utente` (`email`) ON DELETE CASCADE
+  CONSTRAINT `emailCliente` FOREIGN KEY (`email_utente`) REFERENCES `account` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -143,7 +145,7 @@ CREATE TABLE `listadesideri` (
 
 LOCK TABLES `listadesideri` WRITE;
 /*!40000 ALTER TABLE `listadesideri` DISABLE KEYS */;
-INSERT INTO `listadesideri` VALUES ('carlo.magno@yahoo.it'),('domenicomarino42@gmail.com'),('francesco.califano96@yahoo.it'),('mario1995@live.it'),('tony@bomba.it');
+INSERT INTO `listadesideri` VALUES ('francesco.califano96@yahoo.it'),('mario@yahoo.it'),('michele.spano@yahoo.it');
 /*!40000 ALTER TABLE `listadesideri` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +162,7 @@ CREATE TABLE `manager` (
   PRIMARY KEY (`id`),
   KEY `idcliente` (`idcliente`),
   CONSTRAINT `manager_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,6 +171,7 @@ CREATE TABLE `manager` (
 
 LOCK TABLES `manager` WRITE;
 /*!40000 ALTER TABLE `manager` DISABLE KEYS */;
+INSERT INTO `manager` VALUES (1,27);
 /*!40000 ALTER TABLE `manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,8 +187,8 @@ CREATE TABLE `metodo_di_pagamento` (
   `identificativo` char(16) NOT NULL,
   `codice_sicurezza` char(3) DEFAULT NULL,
   `data_scadenza` date NOT NULL,
-  PRIMARY KEY (`email_utente`,`identificativo`),
-  CONSTRAINT `metodo_di_pagamento_ibfk_1` FOREIGN KEY (`email_utente`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `emailCliente_idx` (`email_utente`),
+  CONSTRAINT `emailUtente` FOREIGN KEY (`email_utente`) REFERENCES `account` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -195,7 +198,6 @@ CREATE TABLE `metodo_di_pagamento` (
 
 LOCK TABLES `metodo_di_pagamento` WRITE;
 /*!40000 ALTER TABLE `metodo_di_pagamento` DISABLE KEYS */;
-INSERT INTO `metodo_di_pagamento` VALUES ('domenicomarino42@gmail.com','Aaaaaaaaaa','123','2017-06-25'),('francesco.califano96@yahoo.it','AGDHBGNDTG456DGF','2R2','2016-12-31'),('mario1995@live.it','GHDT4535DGERT261','IU8','2017-02-28');
 /*!40000 ALTER TABLE `metodo_di_pagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -214,9 +216,9 @@ CREATE TABLE `recensione` (
   `data_recensione` date NOT NULL,
   `valutazione` int(5) DEFAULT '0',
   PRIMARY KEY (`email_utente`,`id_contenuto`),
-  KEY `id_contenuto` (`id_contenuto`),
-  CONSTRAINT `recensione_ibfk_1` FOREIGN KEY (`email_utente`) REFERENCES `utente` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `recensione_ibfk_2` FOREIGN KEY (`id_contenuto`) REFERENCES `contenuto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `fbkidcontenuto_idx` (`id_contenuto`),
+  CONSTRAINT `fbkemailutente` FOREIGN KEY (`email_utente`) REFERENCES `account` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fbkidcontenuto` FOREIGN KEY (`id_contenuto`) REFERENCES `contenuto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,7 +228,6 @@ CREATE TABLE `recensione` (
 
 LOCK TABLES `recensione` WRITE;
 /*!40000 ALTER TABLE `recensione` DISABLE KEYS */;
-INSERT INTO `recensione` VALUES ('domenicomarino42@gmail.com',1,'Gioco Fantastico','mi è piaciuta molto la grafica','2017-06-01',5),('francesco.califano96@yahoo.it',1,'Bello','Un gioco Bello','2017-05-12',4);
 /*!40000 ALTER TABLE `recensione` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,10 +241,10 @@ DROP TABLE IF EXISTS `riferita_a`;
 CREATE TABLE `riferita_a` (
   `id_listadesideri` varchar(50) NOT NULL,
   `id_contenuto` int(11) NOT NULL,
-  PRIMARY KEY (`id_contenuto`,`id_listadesideri`),
-  KEY `id_listadesideri` (`id_listadesideri`),
-  CONSTRAINT `riferita_a_ibfk_1` FOREIGN KEY (`id_contenuto`) REFERENCES `contenuto` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `riferita_a_ibfk_2` FOREIGN KEY (`id_listadesideri`) REFERENCES `listadesideri` (`email_utente`) ON DELETE CASCADE
+  PRIMARY KEY (`id_listadesideri`,`id_contenuto`),
+  KEY `idContenuto_idx` (`id_contenuto`),
+  CONSTRAINT `idContenuto` FOREIGN KEY (`id_contenuto`) REFERENCES `contenuto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `idLista` FOREIGN KEY (`id_listadesideri`) REFERENCES `listadesideri` (`email_utente`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -253,8 +254,30 @@ CREATE TABLE `riferita_a` (
 
 LOCK TABLES `riferita_a` WRITE;
 /*!40000 ALTER TABLE `riferita_a` DISABLE KEYS */;
-INSERT INTO `riferita_a` VALUES ('domenicomarino42@gmail.com',1),('domenicomarino42@gmail.com',2),('domenicomarino42@gmail.com',40),('francesco.califano96@yahoo.it',51),('mario1995@live.it',4),('mario1995@live.it',10),('mario1995@live.it',31);
 /*!40000 ALTER TABLE `riferita_a` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `rimozione_account`
+--
+
+DROP TABLE IF EXISTS `rimozione_account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `rimozione_account` (
+  `email_cliente` varchar(50) NOT NULL,
+  PRIMARY KEY (`email_cliente`),
+  CONSTRAINT `fbkkemailcliente` FOREIGN KEY (`email_cliente`) REFERENCES `account` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `rimozione_account`
+--
+
+LOCK TABLES `rimozione_account` WRITE;
+/*!40000 ALTER TABLE `rimozione_account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rimozione_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -267,7 +290,7 @@ DROP TABLE IF EXISTS `ruolo`;
 CREATE TABLE `ruolo` (
   `ambito` varchar(255) NOT NULL,
   `idmanager` int(11) NOT NULL,
-  PRIMARY KEY (`idmanager`),
+  PRIMARY KEY (`idmanager`,`ambito`),
   CONSTRAINT `ruolo_ibfk_1` FOREIGN KEY (`idmanager`) REFERENCES `manager` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -293,9 +316,9 @@ CREATE TABLE `scarica` (
   `id_contenuto` int(11) NOT NULL,
   `data_download` date NOT NULL,
   PRIMARY KEY (`email_utente`,`id_contenuto`),
-  KEY `id_contenuto` (`id_contenuto`),
-  CONSTRAINT `scarica_ibfk_1` FOREIGN KEY (`email_utente`) REFERENCES `utente` (`email`) ON DELETE CASCADE,
-  CONSTRAINT `scarica_ibfk_2` FOREIGN KEY (`id_contenuto`) REFERENCES `contenuto` (`id`) ON DELETE CASCADE
+  KEY `fbkcontenuto_idx` (`id_contenuto`),
+  CONSTRAINT `fbkcontenuto` FOREIGN KEY (`id_contenuto`) REFERENCES `contenuto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fbkemail` FOREIGN KEY (`email_utente`) REFERENCES `account` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -305,35 +328,7 @@ CREATE TABLE `scarica` (
 
 LOCK TABLES `scarica` WRITE;
 /*!40000 ALTER TABLE `scarica` DISABLE KEYS */;
-INSERT INTO `scarica` VALUES ('carlo.magno@yahoo.it',2,'2017-06-16'),('carlo.magno@yahoo.it',5,'2017-06-16'),('domenicomarino42@gmail.com',1,'2017-06-15'),('domenicomarino42@gmail.com',2,'2017-06-15'),('domenicomarino42@gmail.com',21,'2017-06-15'),('domenicomarino42@gmail.com',40,'2017-06-15'),('francesco.califano96@yahoo.it',2,'2017-05-10'),('francesco.califano96@yahoo.it',8,'2017-06-14'),('francesco.califano96@yahoo.it',11,'2017-06-14'),('francesco.califano96@yahoo.it',15,'2017-06-16'),('francesco.califano96@yahoo.it',25,'2017-06-14'),('francesco.califano96@yahoo.it',26,'2017-06-14'),('francesco.califano96@yahoo.it',33,'2017-06-15'),('francesco.califano96@yahoo.it',40,'2017-06-14');
 /*!40000 ALTER TABLE `scarica` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `utente`
---
-
-DROP TABLE IF EXISTS `utente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `utente` (
-  `email` varchar(50) NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cognome` varchar(20) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `è_amministratore` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `utente`
---
-
-LOCK TABLES `utente` WRITE;
-/*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('carlo.magno@yahoo.it','Carlo','Magno','5d579d305eab6ce755539a2d6202db0e103496d3',0),('domenicomarino42@gmail.com','Domenico','Marino','732fb77d0588a7e4f55d3be1ada538912a04e6ee',1),('francesco.califano96@yahoo.it','Francesco','Califano','5d579d305eab6ce755539a2d6202db0e103496d3',1),('mario1995@live.it','Mario','Ruggiero','88ea39439e74fa27c09a4fc0bc8ebe6d00978392',1);
-/*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -345,4 +340,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-14 14:23:28
+-- Dump completed on 2018-01-28 14:40:14
