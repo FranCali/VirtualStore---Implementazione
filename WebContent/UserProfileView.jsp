@@ -5,7 +5,7 @@
 <%
 	ClientBean user = (ClientBean) session.getAttribute("user");
 	String error = (String) request.getAttribute("error");
-
+	String role = (String) session.getAttribute("privilege");
 	Encryptor encryptor;
 	if (user != null) {
 %>
@@ -74,6 +74,27 @@
 
 	</div>
 
+	<%
+		if (role.equals("Client")) {
+	%>
+	<input type="button" value="Remove Account" class="error"
+		onclick="askConfirmation()">
+
+	<%
+		}
+	%>
+
+	<script src="js/formcheck.js"></script>
+	<script>
+		function askConfirmation() {
+			console.log("cliccato")
+			var val = window
+					.confirm('Are you sure you want to delete your account?');
+			if (val == true) {
+
+			}
+		}
+	</script>
 
 	<script src="js/formcheck.js"></script>
 
