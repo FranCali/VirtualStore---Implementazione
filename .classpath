@@ -3,17 +3,25 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib/servlet-api.jar">
+=======
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/apache-tomcat-9.0.0.M22/lib/servlet-api.jar">
+>>>>>>> b812b1dcd3732f834035c99b83dbd37ab8725748
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files/Java/json-simple-1.1.1.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Program Files/Java/json-simple-1.1.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector.J 5.1/mysql-connector-java-5.1.42-bin.jar">
+=======
+	<classpathentry exported="true" kind="lib" path="C:/Program Files (x86)/MySQL/Connector.J 5.1/mysql-connector-java-5.1.41-bin.jar">
+>>>>>>> b812b1dcd3732f834035c99b83dbd37ab8725748
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
 		</attributes>

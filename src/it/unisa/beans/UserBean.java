@@ -8,6 +8,7 @@ public class UserBean {
 	private String password;
 	private boolean isAdmin;
 	
+	//costruttore
 	public UserBean() {
 		super();
 		email = "";
