@@ -20,13 +20,15 @@ public class UserProfileControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		System.out.println("ciao");
+		response.getWriter().write("ciao");
+		/*
 		HttpSession session = request.getSession();
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
 		String action = request.getParameter("action");
-		System.out.println(action);
-	
+		System.out.println("ciao");
+		
 		if (action != null) {
 			if (action.equals("deleteAccount")) {
 				response.setContentType("text/plain");
@@ -53,7 +55,7 @@ public class UserProfileControl extends HttpServlet {
 				}
 			}
 		}
-
+		*/
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

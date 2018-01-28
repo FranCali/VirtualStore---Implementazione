@@ -90,18 +90,22 @@
 			var val = window
 					.confirm('Are you sure you want to delete your account?');
 			if (val == true) {
-				var xhr = new XMLHttpRequest();
-			    xhr.onreadystatechange = function() {
-			        if (xhr.readyState == 4) {
-			            var data = xhr.responseText;
-			            alert(data);
-			        }
-			    }
-			    xhr.open('GET', 'UserProfileControl?action=deleteAccount', true);
-			    xhr.send(null);
+				sendRequest();
 			}
 		}
-		    
+		 
+		function sendRequest() {
+			var xhr = new XMLHttpRequest();
+		    xhr.onreadystatechange = function() {
+		        if (xhr.readyState == 4) {
+		            var data = xhr.responseText;
+		            alert(data);
+		        }
+		    }
+		    xhr.open('GET', 'UserProfileControl', true);
+		    xhr.send(null);
+		}
+		
 	</script>
 
 	<script src="js/formcheck.js"></script>
