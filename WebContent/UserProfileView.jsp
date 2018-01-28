@@ -87,7 +87,6 @@
 	<script src="js/formcheck.js"></script>
 	<script>
 		function askConfirmation() {
-			console.log("cliccato")
 			var val = window
 					.confirm('Are you sure you want to delete your account?');
 			if (val == true) {
