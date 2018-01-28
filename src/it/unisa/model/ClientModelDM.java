@@ -195,14 +195,18 @@ public class ClientModelDM implements ClientModel {
 		return false;
 	}
 
-	@Override
-	public void doInsertDeleteAccountRequest(ClientBean client) throws SQLException {
+	
+	public boolean hadRequestedDeletion(ClientBean client) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		String insertSQL = "INSERT INTO rimozione_account (email_cliente) " + client.getAccount().getEmail() +";";
+		String selectSQL = "SELECT * FROM rimozione_account WHERE email_cliente = '"+ client.getAccount().getEmail() +"';"+"";
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
-			connection.createStatement().executeQuery(insertSQL);
+			preparedStatement = (PreparedStatement)connection.prepareStatement(selectSQL);
+			ResultSet rs = preparedStatement.executeQuery(selectSQL);
+			if(rs.next())
+				return true;
+			
 		} finally {
 			try {
 				if (preparedStatement != null)
@@ -211,7 +215,26 @@ public class ClientModelDM implements ClientModel {
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-		
+		return false;
+	}
+	
+	@Override
+	public void doInsertDeleteAccountRequest(ClientBean client) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String insertSQL = "INSERT INTO rimozione_account (email_cliente) values('" + client.getAccount().getEmail() +"');";
+		System.out.println(insertSQL);
+		try {
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			connection.createStatement().execute(insertSQL);
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
 	}
 
 }

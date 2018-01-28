@@ -21,22 +21,28 @@ public class UserProfileControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		ClientModelDM clientModelDM = new ClientModelDM();
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
 		String action = request.getParameter("action");
-		
+
 		if (action != null) {
 			if (action.equals("deleteAccount")) {
+				String message = "";
 				try {
-					clientModelDM.doInsertDeleteAccountRequest(client);
+					if (clientModelDM.hadRequestedDeletion(client))
+						message = "Already requested";
+					else {
+						clientModelDM.doInsertDeleteAccountRequest(client);
+						message = "Request confirmed";
+					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 				response.setContentType("text/plain");
-				response.getWriter().write("request confirmed");
+				response.getWriter().write(message);
 			}
 
 			if (action.equals("changePassword")) {
@@ -58,7 +64,7 @@ public class UserProfileControl extends HttpServlet {
 				}
 			}
 		}
-	
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

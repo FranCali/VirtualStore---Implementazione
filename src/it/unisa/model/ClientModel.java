@@ -11,6 +11,8 @@ public interface ClientModel {
 
 	public void doInsertDeleteAccountRequest(ClientBean client) throws SQLException;
 	
+	public boolean hadRequestedDeletion(ClientBean client) throws SQLException;
+	
 	public boolean doDelete(ClientBean client) throws SQLException;
 
 	public ClientBean doRetriveByEmail(String email) throws SQLException;
