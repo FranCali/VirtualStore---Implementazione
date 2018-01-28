@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DriverManagerConnectionPool {
 	private static List<Connection> freeDbConnections;
-
+	private static boolean testMode;
 	static {
 		freeDbConnections = new LinkedList<Connection>();
 		try {
@@ -23,13 +23,20 @@ public class DriverManagerConnectionPool {
 		String ip = "localhost";
 		String port = "3306";
 		String db = "storedb";
+		String dbTest = "storedbistest";
 		String username = "root";
 		String password = "root";
-
-		newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db + "?useSSL=false",
-				username, password);
-
-		newConnection.setAutoCommit(true);
+		testMode = false;
+		if(testMode) {
+			newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + dbTest + "?useSSL=false",
+					username, password);
+			newConnection.setAutoCommit(true);
+			
+		} else {
+			newConnection = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/" + db + "?useSSL=false",
+					username, password);
+			newConnection.setAutoCommit(true);
+		}
 		return newConnection;
 	}
 
