@@ -1,0 +1,44 @@
+
+.mySlides {
+	display: none;
+}
+
+.animate-horizontal {
+	position: relative;
+	animation: animate-horizontal 20s;
+	-webkit-animation: animate-horizontal 20s;
+}
+
+.animate-vertical {
+	position: relative;
+	animation: animate-vertical 20s;
+	-webkit-animation: animate-vertical 20s;
+}
+
+@keyframes animate-vertical {
+	0%{top: -400px; opacity: 0.2;}
+	20%{top: 0px; opacity: 1;}
+	85%{top: 0px; opacity: 1;}
+	100%{top: 500px; opacity: 0.2;}
+}
+
+@-webkit-keyframes animate-vertical {
+	0%{top: -400px; opacity: 0.2;}
+	20%{top: 0px; opacity: 1;}
+	85%{top: 0px; opacity: 1;}
+	100%{top: 500px; opacity: 0.2;}
+}
+		
+@keyframes animate-horizontal {
+	0%{left: -540px; opacity: 0.2;}
+	20%{left: 0px; opacity: 1;}
+	85%{left: 0px; opacity: 1;}
+	100%{left: 600px; opacity: 0.2;}
+}	
+
+@-webkit-keyframes animate-horizontal {
+	0%{left: -540px; opacity: 0.2;}
+	20%{left: 0px; opacity: 1;}
+	85%{left: 0px; opacity: 1;}
+	100%{left: 600px; opacity: 0.2;}
+}

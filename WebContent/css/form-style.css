@@ -1,0 +1,38 @@
+form {
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+}
+
+input.insert-input{
+	border: 1px solid lightgray;
+	background-color: white;
+	border-radius: 3px;
+}
+
+input.insert-input:FOCUS{
+	border: 1px solid orange;
+}
+
+input.read-input {
+	border: 1px solid lightgray;
+	background-color: #efefef;
+	border-radius: 3px;
+}
+
+.form-btn{
+	border: 1px solid black;
+	text-align: center;
+	font-size: large;	
+	background-color: #ffbb3c;
+}
+
+.form-btn:HOVER{
+	background-color: orange;
+}
+
+.remove-btn {
+	background-color: red;
+	text-align: center;
+	border: 1px solid gray;
+	font-size: large;	
+}

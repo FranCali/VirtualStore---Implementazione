@@ -1,0 +1,93 @@
+input{
+	height: 22px;
+}
+
+form {
+	padding: 2% 1%;
+	min-width: 25%;
+	width: 25%; 
+	margin: 0 auto; 
+	margin-top: 1%;
+}
+
+form input{
+	width: 95%;
+	margin: 0 2%;
+	margin-bottom: 2%;
+	height: 22px;
+}
+
+form .form-btn{
+	width: 96%;
+	margin: 0 2%;
+	border: 1px solid black;
+	text-align: center;
+	font-size: large;
+	height: 32px;	
+}
+
+form #policy{
+	width: 90%;
+	word-wrap: break-word;
+	font-size: x-small;	
+}
+
+.inputContainer{
+	position: relative;
+}
+
+.popuptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    left: 65%;
+    top: -17px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Popup arrow */
+.popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 20%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	form{
+		margin-top: 5%;
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 767px){
+	
+	form{
+		margin-top: 20%;
+		margin-bottom:4%;
+		width: 80%;
+	}
+	
+	.popuptext {
+	    left: 10%;
+	}
+	
+	/* Popup arrow */
+	.popuptext::after {
+	  	    left: 80%;
+	}
+}
+}

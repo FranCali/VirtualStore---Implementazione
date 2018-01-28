@@ -1,0 +1,217 @@
+
+/***************************User Profile***********************/
+/*prendere tutto il file*/
+#userData{
+	padding: 2% 1%;
+	width: 35%; 
+	margin-top: 10%;
+	margin-left: 5%;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	font-size: large;
+}
+
+#userData img[src="images/icons/userProfileIcon.png"]{
+	width: 30%;
+	height: 30%;
+	margin: 3%;	
+}
+
+#userData fieldset {
+  margin: 2%;
+  width: 82.5%;
+  border-radius: 5px;
+}
+
+#userData .read-input, #userData .insert-input {
+	width: 96%;
+	margin: 0 1%;
+	margin-bottom: 2%;
+	height: 22px;
+	padding: 0.5% 1%;
+}
+
+#changePasswordContent {
+	display: none;	
+	border: 0;
+}
+
+#userData .form-btn{
+	cursor: pointer;
+	display: block;
+}
+
+#changepass-btn {
+	padding: 2%;
+	margin-top: 10%;
+	width: 45%;
+}
+
+#send-btn {
+	padding: 2%;
+	float: right;	
+}
+
+#hide-btn {
+	float: left;
+	width: 15%;
+	padding: 1%;
+	margin-right: 9.5%;
+	background-color: #ff4848;
+	box-shadow: none;
+	font-size: x-large;
+	border: 1px solid black;
+}
+
+
+#hide-btn:HOVER {
+	background-color: red;
+}
+
+
+/*RELATIVO A PAYMENTVIEW */
+
+
+#viewMethod {
+	width: 50%;
+	margin-left: 3%;
+	margin-bottom: 10%;
+	margin-top: 10%;
+}
+
+#viewMethod .read-input{
+	width: 50%;
+	margin: 0 1%;
+	margin-bottom: 2%;
+	height: 22px;
+	padding: 0.5% 1%;
+	font-size: large;
+}
+	
+#viewMethod .remove-btn {
+	padding: 1% 2%;
+	margin-left: 1%;
+}
+
+#insertMethod {
+	width: 30%;
+	margin-top: 10%;
+}
+
+#insertMethod legend{
+	font-size: large;
+}
+
+#insertMethod form {
+	border: 0;
+}
+
+#insertMethod .insert-input {
+	height: 22px;
+	width: 90%;
+	margin-bottom: 2%;
+}
+#insertMethod .form-btn {
+	width: 30%;
+	padding: 0 1%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	
+	#userData{
+		width: 50%;
+	}
+	
+	#userData fieldset{
+		margin: 0 auto;
+	}
+	
+	#viewMethod {
+		width: 90%;
+	}
+}
+
+@media screen and (max-width: 767px){
+		
+	/*USER PROFILE*/
+	#userData{
+		width: 80%; 
+		margin-top: 28%;
+		margin-bottom: 1%;
+	}
+	
+	#userData img[src="images/icons/userProfileIcon.png"]{
+		width: 30%;
+	}
+	
+	#userData fieldset {
+	 	width: 70%;
+	}
+	
+	#userData .read-input, #userData .insert-input {
+		font-size: small;
+		margin: 1% -13%;
+		width: 120%;
+	}
+	
+	#changepass-btn {
+		width: 100%;	
+		padding: 2%;
+	}
+	
+	#hide-btn {
+		width: 40px;
+	}
+	
+	#send-btn {
+		width: 140px;
+		padding: 3%;
+	}
+	
+	/*Se il metodo è presente*/
+	#viewMethod {
+		width: 90%;
+		margin-top : 30%;
+		margin-left: 3%;
+		margin-bottom: 1%;
+		height: 50%;
+	}
+	
+	#viewMethod .read-input {
+		width: 90%;
+		font-size: medium;
+	}
+	
+	/*Se il metodo non è presente*/
+	
+	#insertMethod {
+		width: 90%;
+		margin-top: 30%;
+	}
+	
+	#insertMethod form {
+		border: 0;
+	}
+	
+	#insertMethod .insert-input {
+		height: 22px;
+		width: 90%;
+		margin-bottom: 2%;
+	}
+	#insertMethod .form-btn {
+		width: 30%;
+		padding: 0 1%;
+	}
+}
+
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+	
+	#userData .read-input, #userData .insert-input {
+		font-size: small;
+		margin: 0 auto ;
+		width: 100%;
+	}
+	
+	
+}

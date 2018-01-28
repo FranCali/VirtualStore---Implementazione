@@ -1,0 +1,894 @@
+img[src = 'images/icons/logoIcon.png']{
+	display: block;
+	margin: 0 auto;
+	width: 14%;
+}
+
+.title {
+	text-align: center;
+}
+
+.error{
+	color:red;
+	text-align: center;
+}
+
+.ok {
+	color: green;
+}
+
+a.norm-anchor {
+	text-decoration: underline;
+	color: blue;	
+}
+
+hr {
+	width: 98%;
+	margin: 0 auto;
+}
+
+
+/**************************************************/
+
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+
+html {
+	width: 100%;
+	height: 120%;
+	resize: none;
+}
+
+body {
+	font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+	width: 97%;
+	height: 120%;
+	resize: none;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+/********************************* M A I N - S E C T I O N *****************************************/
+
+
+section.topContent {
+	background-color: #fbfbfb;
+	background-image: url('../images/icons/logoIcon.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 13%;
+	width: 100%;
+	height:43%;
+	margin-top: 8%;
+	margin-bottom: 5%;
+}
+
+section.topContent #leftPanel{
+	float: left;
+	height: 100%;
+	width: 60%;
+}
+
+section.topContent #rightPanel{
+
+	overflow: hidden;
+	float:left;
+	height: 100%;
+	width: 40%;
+	
+}
+
+section.topContent #rightPanel img{
+	width: 100%;
+	height: 100%;
+}
+
+section.topContent #topleftPanel{
+	
+	width: 100%;
+	height: 88.5%;
+	overflow: hidden;
+}
+
+section.topContent #topleftPanel img{
+	width: 100%;
+	height: 100%;
+}
+
+section.topContent #bottomleftPanel{
+	height: 12%;
+	width: 100%;
+}
+section.topContent #bottomleftPanel table{
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+	text-align: center;
+	border: 0px;
+}
+section.topContent #bottomleftPanel table td{
+	background-color: lightgray;
+	height: 100%;
+	border: 0px;
+}
+
+section.topContent #bottomleftPanel table td a{
+	padding: 5% 2%;
+	display: block;
+}
+
+section.topContent #bottomleftPanel table td:HOVER{
+	background-color: orange;
+}
+
+
+/*SEZIONE APP**************/
+section.mainSection {
+	margin-bottom: 30%;
+}
+
+section.contents-section {
+	width: 100%;
+	margin-bottom: 6%;
+	background-color: white;
+	position: relative;
+	overflow: hidden;
+}
+
+
+.next {
+	height: 100%;
+	position: absolute;
+    right: 0;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.prev {
+	height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.prev:HOVER, .next:HOVER{
+	opacity: 1;
+}
+
+.prev img, .next img {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+section.contents-section #Apps, section.contents-section #Musics, section.contents-section #Films, section.contents-section #Books  {
+	overflow: hidden;
+}
+
+section.contents-section table{
+	border-collapse: separate;
+	
+}
+
+section.contents-section table tr {
+	width: 100%;
+	
+}
+
+section.contents-section table td{
+	vertical-align: top;
+	border: 8px solid white;
+}
+
+section.contents-section table td:FIRST-CHILD{
+	border-left: 0px; 
+}
+
+section.contents-section table td:LAST-CHILD{
+	border-right: 0px; 
+}
+
+div.content-square{
+
+	text-align: center;
+}
+
+div.content-square:HOVER{
+	background-color: #e6e6e6;
+	opacity: 0.8;
+}
+
+div.content-square p.content-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+section.contents-section h3{
+	display: inline;
+	font-size: x-large;
+}
+
+section.contents-section div.content-square {
+	width: 140px;
+	max-height: 260px; 
+}
+
+section.contents-section div.content-square img {
+	width: 140px;
+}
+
+#more{
+	float:right;
+}
+
+/*Riferito a ContentTypeView.jsp */
+
+.margin-title {
+	margin-top: 8%;
+	text-align: center;
+}
+
+section.contents-table {
+	width: 90%;
+	height: 100%;
+	margin: 8% 5% 5% 6%;
+}
+
+section.contents-table div.content-wrapper {
+	height: 260px;
+	float: left;
+}
+
+section.contents-table #orderSelection {
+	width: 100%;
+}
+
+section.contents-table div.content-square {
+	width: 120px;
+	max-height: 250px; 
+	border: 5px solid white;
+	float:left;
+}
+
+section.contents-table div.content-square img {
+	width: 120px;
+}
+
+/*Riferito a ContentView.jsp */
+
+.content-view {
+	width: 90%;
+	height: 20%;
+	margin: 8% auto;
+	margin-top: 10%;	
+}
+
+section.content-view img{	
+	display: block;
+	max-height: 266px;
+	float: left;
+	margin-bottom: 5%;
+}
+
+div.content-details {
+	display: block;
+	height: 100%;
+	width: 80%;
+	margin-left: 17%;
+}
+
+div.content-details a.button, div.content-details a.obtainedBtn {
+	margin-right: 2%;
+	margin-top: 5%;
+}
+
+div.content-details a.obtainedBtn:HOVER{
+	background-color: lightgray;
+}
+
+a.button {
+	font-size: large;
+	display: block;
+	padding: 1.5% 2.5%;
+	text-align: center;
+}
+
+a.obtainedBtn{
+	background-color: lightgray;	
+	text-align: center;
+	font-size: large;
+	display: inline-block;
+	float: left;
+	padding: 1.7% 2.5%;
+	border: 1px solid black;
+}
+
+#paymentWindow {
+	position: fixed;
+	left: 30%;
+	top: 15%;
+	width: 500px;
+	height: 250px;
+	border: 2px solid orange;
+	background-color: white;
+	z-index: 1;
+	display: none;
+}
+
+#paymentWindow #useMethod, #paymentWindow #useCode{
+	width: 50%;
+	float: left;
+	margin-top: 10%;
+}
+
+#paymentWindow #useMethod img, #paymentWindow #useCode img{
+	display: block;
+	margin: 0px 60px;
+	width: 128px;
+}
+
+#paymentWindow #useMethod a{
+	display: block;
+	clear: left;
+	width: 70%;
+	padding: 2% 3%;
+	font-size: medium;
+}
+
+#paymentWindow #useCode div {
+	width: 220px;
+	margin: 0 auto;
+}
+
+#paymentWindow #useCode div input{
+	padding: 2% 3%;
+	font-size: medium;
+}
+
+#paymentWindow #useCode div input[type ="submit"] {
+	cursor: pointer;
+}
+
+#paymentWindow #useCode div form {
+	border: 0;
+}
+
+a.button#download {
+	float:left;
+	background-color: #ffb833;
+}
+
+a.button#download:HOVER{
+	background-color: orange;
+}
+
+a.button#add {
+	float:left;
+	background-color: #009b00;
+}
+
+a.button#add:HOVER {
+	background-color: green;
+}
+
+a.button#remove {
+	float:left;
+	background-color: #ff2b2b;
+}
+
+a.button#remove:HOVER {
+	background-color: red;
+}
+
+a.button#review {
+	float: left;
+	border: 1px solid orange;
+	background-color: white;
+	padding-bottom: 1.85%;
+}
+
+a.button#review:HOVER{
+	border: 1px solid white;
+	background-color: orange;
+}
+
+a.button#modify_review {
+	float: left;
+	background-color: green;
+	padding-bottom: 1.85%;
+	
+}
+
+section#description, section#reviews {
+	clear: left;
+	margin-bottom: 10%;
+	width: 90%;
+}
+
+section#reviews{
+	margin-bottom: 30%;
+}
+
+fieldset {
+	position:relative;
+    padding:30px;
+}
+
+#description fieldset, #reviews fieldset{
+    z-index: -1;
+}
+		
+@keyframes fullScale {
+	from {transform: scale(0); opacity: 0;}
+	to {transform: scale(1); opacity: 1;}
+}
+
+@keyframes disappear {
+	from {transform: scale(1); opacity: 1;}
+	to {transform: scale(0); opacity: 0;}
+}
+
+@-webkit-keyframes fullScale {
+	from {transform: scale(0); opacity: 0;}
+	to {transform: scale(1); opacity: 1;}
+}
+
+@-webkit-keyframes disappear {
+	from {transform: scale(1); opacity: 1;}
+	to {transform: scale(0); opacity: 0;}
+}
+
+#reviewWindow {
+	background-color: white;
+	border: 2px solid orange; 
+	display: none; 
+	overflow: hidden; 
+	position: fixed; 
+	width: 500px; 
+	height: 300px;
+	top: 20%; 
+	left: 30%;	
+}
+#reviewWindow form {
+	border: 0;
+}
+
+#reviewWindow h2, #paymentWindow h3{
+	display: inline-block; 
+	margin-left: 33%;
+	text-align: center; 
+	color: orange;
+}
+
+#closeTag {
+	float: right;
+	color: orange;
+}
+
+#reviewWindow #description {
+	width: 100%; 
+	height: 150px;
+	background-color: white; 
+	font-size: large;
+	resize: none;
+	border: 0;	
+}
+#reviewWindow #description:FOCUS{
+	border: 1px solid lightgray;
+	outline: none;
+}
+
+
+
+#reviewWindow #confirmReview {
+	cursor: pointer;
+	padding: 2% 4%;
+	display: block;
+	margin: 0 auto;
+}
+
+
+#reviewWindow a[id ^= "star"] {
+	color: lightgray;
+	font-size: large;
+}
+
+legend {
+	font-size: xx-large;
+	font-weight: bold;
+	margin-left: 2%;
+}
+
+/*Riferito a WishlistView */
+
+#title {
+	margin-top: 8%;
+	font-size: 280%;
+	color: orange;
+}
+
+#wishlist {
+	padding-top: 5%;
+	overflow: hidden;
+	min-height: 1px;
+}
+
+#wishlist li {
+	width: 100%;
+	margin-left: 0;
+}
+
+#wishlist #remove-wrapper {
+	margin-left: 5%;
+	
+}
+#wishlist .content-info {
+	clear: left;
+}
+
+#wishlist .content-info a {
+	float: left;
+}
+
+#wishlist .content-info img {
+	max-height: 266px;
+}
+
+#wishlist #content-wrapper {
+	width: 40%;
+	margin-left: 0;
+	margin-bottom: 20px;
+	min-height: 200px;
+	overflow: hidden;
+}
+
+#remove-wrapper {
+	position: relative;
+}
+
+#wishlist #removeFromList { 
+	position: absolute;
+	display: none;
+	left: -15px;
+	top: -15px;
+	z-index: 1;
+}
+
+div#remove-wrapper:HOVER #removeFromList{
+	display: block;
+}
+
+#wishlist + a.button {
+	clear: left;
+	display: block;
+	width: 10%;
+	padding: 1% 5%;
+	background-color: #ff2b2b;
+}
+
+#wishlist a.button:HOVER {
+	background-color: red;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	img[src = 'images/icons/logoIcon.png']{
+		margin-top: 5%;
+		width: 20%;
+	}
+	section.topContent {
+		height:28%;
+	}
+	
+	section.content-view img{	
+		margin-right: 2%;
+	}
+	
+	div.content-details a.button{
+		font-size: medium;
+	}
+
+	#download {
+		padding: 1.65% 2.5%;
+		font-size: large;	
+	}
+}
+
+@media screen and (max-width: 767px){
+	
+	/*RIFERITO A INDEX*/
+	
+	section.topContent {
+		margin-top: 9%;
+		height:35%;
+	}
+	
+	.prev, .next{
+		display: none;
+	}
+	
+	section.topContent #rightPanel{
+		display: none;
+		
+	}
+	
+	section.topContent #leftPanel{
+		width: 100%;
+	}
+	
+	top.content {
+		margin-top: 6%;
+	}
+
+	section.topContent #bottomleftPanel{
+	
+	}
+	section.topContent #bottomleftPanel table td a{
+		font-size: small;
+	}
+	
+	section.contents-section{
+		margin-top: 10%;
+	}
+	
+	section.contents-section div.content-square {
+		width: 110px;
+	}
+	
+	
+	section.contents-section div.content-square img {
+		width: 90px;
+	}
+	
+	section.contents-section table td{
+		border: 0;
+	}
+	
+	
+	
+	
+	/* parte superiore prima dei bottoni buy ecc*/
+	
+	img[src = 'images/icons/logoIcon.png']{
+		margin-top: 5%;
+		width: 30%;
+	}
+	
+	#contentIcon {
+		width: 28%;
+		margin-top: 5%;
+	}
+	#info-wrapper {
+		margin-top:35%;
+		margin-left: 40%;
+	}
+	div.content-details {
+		margin-left: 0;
+	}
+	a.button#download , a.button#add , a.button#remove , a.button#modify_review  , a.button#review  {
+		clear : left;
+		width: 90%;
+	}
+	 a.button#review , a.button#modify_review , a.button#add , a.button#remove{
+	 	margin-bottom: 30%;
+	 }
+	 
+	 a.obtainedBtn{
+		width: 91%;
+	}
+	 
+	/*descrizione e recensioni*/
+	section#description fieldset p {
+		font-size: large;
+	}
+	
+	
+	section#reviews fieldset div.review {
+		width: 90%;
+		font-size: small;
+		margin-right: 0;
+	}
+	legend {
+		font-size: large;
+		font-weight: bold;
+		margin-left: 4%;
+	}
+	
+	section#description, section#reviews {
+		width: 90%;
+		height: 25%;
+		margin: 0 auto;
+		margin-bottom: 20%;
+	}
+	
+	div.scrollable{
+		overflow: auto;
+		width: 90%;
+		height: 90%;
+	}
+	
+	section#reviews fieldset, section#description fieldset{
+		padding: 7% 0;
+		height: 100%;
+		position: static;
+	}
+	
+	/*finestra pagamento*/
+	#paymentWindow {
+		position: fixed;
+		left: 1%;
+		top: 15%;
+		width: 95%;
+		height: 75%;
+	
+	}
+	#paymentWindow div {
+		width: 100%;
+	}
+	
+	#paymentWindow h3 {
+		display: inline;
+		margin-left: 0;
+	}
+	#paymentWindow a {
+		margin-right: 3%;
+	}
+	
+	#paymentWindow #useMethod, #paymentWindow #useCode{
+		width: 100%;
+		float: left;
+		margin-top: 10%;
+	}
+	
+	#paymentWindow #useMethod img, #paymentWindow #useCode img{
+		display:block;
+		margin: 1% 6%;
+		width: 20%;
+	}
+	
+	#paymentWindow #useMethod a{
+		display: block;
+		clear: left;
+		width: 70%;
+		margin: 0 auto;
+	}
+	
+	#paymentWindow #useCode{
+		width: 100%;
+	}
+	
+	#paymentWindow #useCode img{
+		margin-top : 6%;
+		width: 20%;
+	}
+	
+	#paymentWindow #useCode div{
+		width: 100%;
+	}
+	
+	#paymentWindow #useCode div form {
+		clear:left;
+		width: 90%;
+		margin: 0 auto;
+	}
+	
+	#paymentWindow #useCode div form input:FIRST-CHILD , #paymentWindow #useCode div form p{
+		margin-left: 15%;
+	}
+	
+	/*finestra recensioni*/
+	
+	#reviewWindow {
+		width: 95%; 
+		height: 61%;
+		top: 20%; 
+		left: 1%;
+		overflow: hidden;	
+}
+	#reviewWindow form {
+		border: 0;
+	}
+	
+	#reviewWindow h2, #paymentWindow h3{
+		margin-left: 0;
+		margin-top: 4%;
+		margin-bottom: 4%;
+		font-size: medium;
+	
+	}
+	
+	#closeTag {
+		margin-right: 3%;
+	}
+	
+	#reviewWindow form .insert-input {
+		display: inline;
+		width: 39%;
+	}
+	
+	#ratingTitle , #descriptionTitle {
+		display:inline-block;
+		margin-top: 4%;
+	}
+	#reviewWindow #description {
+		margin-top : 1%;
+		margin-left:2%;
+		width: 95%; 
+	}
+	
+	#reviewWindow #confirmReview {
+		margin-top: 1%;
+	}
+	
+	/*RIFERITO A DOWNLOADVIEW*/
+		
+	section.contents-table {
+		height: 100%;
+		width: 100%;
+		margin:0;
+		margin-top: 14%;
+	}
+	
+	section.contents-table div.content-wrapper{
+		height: 200px;
+	}
+	
+	section.contents-table div.content-square{
+		margin-bottom: 50px;
+		margin-left: 17px;
+
+	}
+	
+	section.contents-table div.content-square{
+		width: 100px;
+	}
+	
+	section.contents-table div.content-square img{
+		width: 100px;
+	}
+	/*riferito a wishilist view*/
+		
+
+	
+	#wishlist {
+		width: 100%;
+	}
+	
+	#wishlist li {
+		width: 100%;
+	}
+	
+	h2 {
+		clear: left;
+	}
+	
+	#wishlist #content-wrapper {
+		width: 100%;
+	}
+
+	#wishlist + a.button {
+		width: 40%;
+		padding: 3% 3%;
+		font-size: x-large;
+		margin-bottom: 4%;
+	}
+	
+	.margin-title {
+		margin-top: 20%;
+	}
+	
+	
+}
+

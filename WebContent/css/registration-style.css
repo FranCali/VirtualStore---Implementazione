@@ -1,0 +1,15 @@
+form .info{
+	width: 90%;
+	word-wrap: break-word;
+	font-size: x-small;	
+}
+
+hr {
+	width: 70%;	
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+form .span{
+	font-size: small;
+}

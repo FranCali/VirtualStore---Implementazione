@@ -1,0 +1,417 @@
+
+/*********************************T O P - B A R************************************** */
+a {
+	color: black;
+	text-decoration: none;
+}
+
+
+nav.topBar {
+	font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+	z-index: 99999;
+	width: 100%;
+	position: fixed;
+	top:0;
+	height: 90px;
+	background-color: white;
+}
+
+nav.topBar ul {
+	width: 40%;
+	display:inline;
+	height: 100%;
+} 
+
+nav.topBar ul li {
+	width:8%;
+	margin-top:2%;
+	float:left;
+	text-align: center; 
+	list-style-type: none;
+	padding: 1% 0;
+}
+
+nav.topBar ul li a.active{
+	color: black;
+	font-weight: bold;
+}
+
+nav.topBar ul li a{
+	color: gray;
+	cursor: pointer;
+}
+
+nav.topBar ul li a:HOVER:not(.active)  {
+	color: orange;
+}
+
+#hamburgerBtn, #manageBtn , #responsiveSearchBtn, #closebtn{
+	display: none;
+} 
+
+div.userPanel {
+	width: 58.4%;
+	float: right;
+	margin-right: 1.6%;
+}
+
+div#searchPanel {
+	border: 1px solid gray;
+	float:right;
+	margin-top:3.4%;
+	padding: 1% 0.2%;
+	width: 55%;
+}
+
+div#searchPanel:HOVER {
+	border: 1px solid black;
+}
+
+form#formSearch {
+	border: 0;
+}
+
+div.userPanel input.search {
+	float: right;
+	padding:0;
+}
+ 
+div.userPanel #manage {
+	font-weight: bold;
+	font-variant: small-caps;
+	float: left;
+ 	margin-top: 3.4%;
+ 	border-radius: 4px;
+ 	padding: 1% 1%;
+	background-color: orange;
+	text-align: center;
+	margin-left: 15%;
+	color: white;
+} 
+
+div.userPanel #manage:HOVER {
+	background-color: white;
+	color: orange;
+	transition: 0.4s;
+	-webkit-transition: 0.4s;
+} 
+ 
+div.userPanel #login {
+	float:right;
+ 	margin-top: 3.4%;
+ 	padding: 1% 0.2%;
+	background-color: white;
+	text-align: center;
+	margin-right: 2%;
+	width: 10%;
+	color: gray;
+}
+
+ #container:HOVER #menuList{
+	display: block;
+}
+
+div.userPanel #login:HOVER {
+	background-color: orange;
+	color: white;
+	transition: 0.4s;
+	-webkit-transition: 0.4s;
+	
+}
+
+
+div.userPanel #userProfile {
+	float: right;
+	margin-top: 2.5%;
+ 	padding: 0.7% 1.5%;
+	background-color: white;
+	border: 0 none;
+	box-shadow: none;
+	outline: none;
+	cursor: pointer;
+}
+
+#triangle {
+	width: 0;
+	height: 0;
+	position: relative;
+	top: -15px;
+	left: 40px;
+	border-style: solid;
+	border-width: 0 20px 20px 20px;
+	border-color: transparent transparent #FFFFFF transparent;
+}
+
+div.userPanel #menuList{
+	display: none;
+	position: absolute;
+	background-color: white;
+	overflow: visible;
+	border: 1px solid gray;
+	margin-top: 1%;
+	top: 90%;
+	-webkit-top: 95%;
+	left: 50%;
+	width: 20%;
+	text-align: center;
+}
+
+div.userPanel #menuList a{
+	text-align: center;
+	display: block;
+	width: 90%;
+	text-decoration: none;
+	padding: 5%;
+}
+
+div.userPanel #menuList a:HOVER:not(#logout){
+	background-color: #dfdfdf;
+}
+
+div.userPanel #userProfile:HOVER {
+	background-color: #e8e8e8;
+}
+
+div.userPanel input.search#searchBtn {
+	width: 17px;
+	background-color: white;
+	padding :0 2px;
+	border: 1px none gray;
+	box-shadow: none;
+	outline: none;
+}
+
+div#searchPanel {
+	margin-right: 2.5%;
+}
+
+input.search#searchInput {
+	border: none;
+	width: 93%;
+	outline:none;
+}
+
+div.userPanel #logout{
+	font-size: large;
+	background-color: #ffad15;
+	color: white;
+}
+
+div.userPanel #logout:HOVER{
+	background-color: orange;
+}
+
+#hints-div {
+	padding: 4px 5px;
+	position: absolute; 
+	top: 80px;
+	width: 30%;
+	background-color: white;
+}
+
+.hint {
+	display: block;
+}
+
+.hint:HOVER{
+	background-color: lightgray;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+	div#searchPanel {
+		width: 45%;
+	}
+	
+	input.search#searchInput {
+		width: 85%;
+	}
+	
+	div.userPanel #userProfile {
+		margin-top: 2%;
+	}
+	
+	div.userPanel #menuList{
+		top: 80%;
+		width: 27%;
+	}
+	
+}
+	
+@media only screen and (max-width: 767px){
+	
+	@keyframes expanding{
+		from{width: 0;};
+		to{width: 100%;};
+	}
+	
+	@-webkit-keyframes expanding{
+		from{width: 0;};
+		to{width: 100%;};
+	}
+	
+	
+	nav.topBar{
+		height: 40px;
+	}
+	
+	nav.topBar ul {
+		position: fixed;
+		left: 0;
+		top: 40px;
+		background-color: white;
+		border-left: 0;
+		width: 0;
+		height: 110%;
+		overflow: scroll;
+		transition: 0.3s;
+		
+	} 
+	
+	nav.topBar ul li{
+		width: 100%;
+		display: block;
+		padding: 10% 0;
+		transition: 0.3s;
+		margin-top: 0;
+	}
+	nav.topBar ul li:not(#closeMenu):HOVER{
+		background-color: #e4e4e4;
+	}
+	
+	nav.topBar ul li a{
+		font-size: x-large;
+	}
+	
+	
+	#hamburgerBtn{
+		display: block;
+		float: left;
+		font-size: 30px;
+		cursor: pointer;
+		color: gray;
+	}
+	
+	div.userPanel{
+		height: 100%;
+		width: 65%;
+	}
+	
+	div.userPanel #manage {
+		font-size: small;
+		margin-right: 5%;
+		margin-left: 0;
+		margin-top: 4%;
+		z-index: -1;
+		background-color: white;
+		border: 1px solid gray;
+		color: gray;
+	}
+	
+	
+	div.userPanel #login {
+		margin-right: 20%;
+		margin-top: 2%;
+		width: 25%;
+		border: 1px solid gray;
+		z-index: -1;
+	}
+	
+	div#searchPanel{
+		display: none;
+		position: absolute;
+		margin-top: 1%;
+		margin-right: 3%;
+		height: 50%;
+		right: 0;
+		z-index: 999;
+		width: 85%;
+		animation: expanding 0.1s;
+		background-color: white;
+	}
+
+	.search{
+		margin-top: 2px ;
+		width: 100%;
+		margin-lef:0;
+	}
+	
+	#searchInput{
+		width: 100%;
+	}
+	
+	#hints-div {
+		padding: 4px 5px;
+		position: absolute; 
+		top: 70px;
+		width: 90%;
+		background-color: white;
+	}
+	
+	div.userPanel button#userProfile{
+		margin-top: 0;
+		margin-right: 12%;
+		padding: 0;
+		z-index: -1;
+	}
+	
+	#responsiveSearchBtn{
+		float: right;
+		display: block;
+		margin: 0;
+		margin-right: 2%;
+		padding: 2px;
+	}
+	
+	#triangle {
+		top: -14px;
+		left: 20px;
+		border-width: 0 15px 15px 15px;
+	
+	}	
+
+	
+	div.userPanel #menuList{
+		border: 1px solid gray;
+		margin-top: 1%;
+		top: 90%;
+		left: 50%;
+		width: 38% !IMPORTANT;
+	}
+}
+
+@media only screen and (max-width: 767px) and (orientation: landscape) {
+	div.userPanel{
+		height: 100%;
+		width: 50%;
+	}
+	
+	div.userPanel button#userProfile{
+		margin-top: 0;
+		margin-right: 30%;
+		padding: 0;
+		z-index: -1;
+	}
+	
+	div.userPanel #menuList{
+		border: 1px solid gray;
+		margin-top: 1%;
+		top: 90%;
+		left: 56%;
+		width: 30% !IMPORTANT;
+	}
+	
+	div.userPanel #menuList{
+		
+	}
+}
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+	
+	div.userPanel #menuList{
+		top: 80%;
+		left: 54%;
+		width: 20% !IMPORTANT;
+	}
+}
+
