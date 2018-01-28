@@ -22,7 +22,7 @@ public class UserProfileControl extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("ciao");
 		response.getWriter().write("ciao");
-		/*
+		
 		HttpSession session = request.getSession();
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
@@ -55,7 +55,7 @@ public class UserProfileControl extends HttpServlet {
 				}
 			}
 		}
-		*/
+	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
