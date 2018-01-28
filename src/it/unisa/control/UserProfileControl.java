@@ -1,4 +1,5 @@
 package it.unisa.control;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
@@ -13,7 +14,6 @@ import it.unisa.beans.ClientBean;
 import it.unisa.model.AccountModelDM;
 import it.unisa.util.Encryptor;
 
-
 @WebServlet("/UserProfileControl")
 public class UserProfileControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,22 +22,35 @@ public class UserProfileControl extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		String current = request.getParameter("currentPassword");
-		String newPassword = request.getParameter("password");
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
-
-		if (!current.equals("") && current != null) {
-			if (!Encryptor.encryptPassword(current).equals(client.getAccount().getPassword())) {
-				request.setAttribute("error", "password mismatching");
+		String action = request.getParameter("action");
+		System.out.println(action);
+	
+		if (action != null) {
+			if (action.equals("deleteAccount")) {
+				response.setContentType("text/plain");
+				response.getWriter().write("request confirmed");
 				dispatcher.forward(request, response);
 			}
-			try {
-				AccountBean newAccount = new AccountBean(client.getAccount().getEmail(), newPassword);
-				new AccountModelDM().doUpdatePassword(newAccount);
-				response.sendRedirect("UserProfileView.jsp");
-			} catch (SQLException e) {
-				e.printStackTrace();
+
+			if (action.equals("changePassword")) {
+				String current = request.getParameter("currentPassword");
+				String newPassword = request.getParameter("password");
+
+				if (!current.equals("") && current != null) {
+					if (!Encryptor.encryptPassword(current).equals(client.getAccount().getPassword())) {
+						request.setAttribute("error", "password mismatching");
+						dispatcher.forward(request, response);
+					}
+					try {
+						AccountBean newAccount = new AccountBean(client.getAccount().getEmail(), newPassword);
+						new AccountModelDM().doUpdatePassword(newAccount);
+						response.sendRedirect("UserProfileView.jsp");
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 

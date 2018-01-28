@@ -48,7 +48,7 @@
 
 			<form id="changePasswordContent"
 				onsubmit="return controlMatchingPassword('againPassword', 'newPassword')"
-				action="UserProfileControl" method="post">
+				action="UserProfileControl?action=changePassword" method="post">
 				<br> Current password<br /> <input class="insert-input"
 					type="password" name="currentPassword" required><br /> New
 				password<br /> <input id="newPassword" class="insert-input"
@@ -90,9 +90,18 @@
 			var val = window
 					.confirm('Are you sure you want to delete your account?');
 			if (val == true) {
-
+				var xhr = new XMLHttpRequest();
+			    xhr.onreadystatechange = function() {
+			        if (xhr.readyState == 4) {
+			            var data = xhr.responseText;
+			            alert(data);
+			        }
+			    }
+			    xhr.open('GET', 'UserProfileControl?action=deleteAccount', true);
+			    xhr.send(null);
 			}
 		}
+		    
 	</script>
 
 	<script src="js/formcheck.js"></script>

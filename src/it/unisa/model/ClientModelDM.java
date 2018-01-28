@@ -195,4 +195,23 @@ public class ClientModelDM implements ClientModel {
 		return false;
 	}
 
+	@Override
+	public void doInsertDeleteAccountRequest(ClientBean client) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String insertSQL = "INSERT INTO rimozione_account (email_cliente) " + client.getAccount().getEmail() +";";
+		try {
+			connection = (Connection) DriverManagerConnectionPool.getConnection();
+			connection.createStatement().executeQuery(insertSQL);
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(connection);
+			}
+		}
+		
+	}
+
 }
