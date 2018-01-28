@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import it.unisa.beans.AccountBean;
 import it.unisa.beans.ClientBean;
 import it.unisa.model.AccountModelDM;
+import it.unisa.model.ClientModelDM;
 import it.unisa.util.Encryptor;
 
 @WebServlet("/UserProfileControl")
@@ -22,16 +23,16 @@ public class UserProfileControl extends HttpServlet {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		ClientModelDM clientModelDM = new ClientModelDM();
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
 		String action = request.getParameter("action");
-		System.out.println("ciao");
 		
 		if (action != null) {
 			if (action.equals("deleteAccount")) {
+				
 				response.setContentType("text/plain");
 				response.getWriter().write("request confirmed");
-				dispatcher.forward(request, response);
 			}
 
 			if (action.equals("changePassword")) {
