@@ -102,7 +102,7 @@
 		            alert(data);
 		        }
 		    }
-		    xhr.open('GET', 'UserProfileControl', true);
+		    xhr.open('GET', 'UserProfileControl?action=deleteAccount', true);
 		    xhr.send(null);
 		}
 		

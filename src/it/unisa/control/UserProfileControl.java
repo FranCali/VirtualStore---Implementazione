@@ -20,8 +20,6 @@ public class UserProfileControl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("ciao");
-		response.getWriter().write("ciao");
 		
 		HttpSession session = request.getSession();
 		ClientBean client = (ClientBean) session.getAttribute("user");
