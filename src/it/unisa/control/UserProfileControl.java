@@ -30,7 +30,11 @@ public class UserProfileControl extends HttpServlet {
 		
 		if (action != null) {
 			if (action.equals("deleteAccount")) {
-				
+				try {
+					clientModelDM.doInsertDeleteAccountRequest(client);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 				response.setContentType("text/plain");
 				response.getWriter().write("request confirmed");
 			}
