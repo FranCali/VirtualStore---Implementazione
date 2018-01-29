@@ -2,6 +2,8 @@ package it.unisa.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,7 @@ import it.unisa.beans.AccountBean;
 import it.unisa.beans.ClientBean;
 import it.unisa.model.AccountModelDM;
 import it.unisa.model.ClientModelDM;
+import it.unisa.util.Data;
 import it.unisa.util.Encryptor;
 
 @WebServlet("/UserProfileControl")
@@ -35,7 +38,10 @@ public class UserProfileControl extends HttpServlet {
 					if (clientModelDM.hadRequestedDeletion(client))
 						message = "Already requested";
 					else {
-						clientModelDM.doInsertDeleteAccountRequest(client);
+						String date = Data.creaData(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(),
+								LocalDateTime.now().getDayOfMonth());
+
+						clientModelDM.doInsertDeleteAccountRequest(client, date);
 						message = "Request confirmed";
 					}
 				} catch (SQLException e) {

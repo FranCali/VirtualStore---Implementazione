@@ -47,7 +47,7 @@
 	<section id = "grid-menu">
 		<table id = "administration-panel">
 			<tr>
-				<td><a href = "javascript: retrieveTable('manage-content'); createWindow('manage-content');">Add/Remove<br> Content</a></td>
+				<td><a href = "javascript: retrieveTable('manage-deletionRequests'); createWindow('manage-content');">Account Deletion Requests</a></td>
 				<td><a href = "javascript: retrieveTable('manage-content'); createWindow('manage-content');">Add/Remove<br> Content</a></td>
 			</tr>
 			<tr>

@@ -9,7 +9,7 @@ public interface ClientModel {
 
 	public void doInsert(ClientBean client) throws SQLException;
 
-	public void doInsertDeleteAccountRequest(ClientBean client) throws SQLException;
+	public void doInsertDeleteAccountRequest(ClientBean client, String date) throws SQLException;
 	
 	public boolean hadRequestedDeletion(ClientBean client) throws SQLException;
 	

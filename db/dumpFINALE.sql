@@ -266,6 +266,7 @@ DROP TABLE IF EXISTS `rimozione_account`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rimozione_account` (
   `email_cliente` varchar(50) NOT NULL,
+  `data_richiesta` date DEFAULT NULL,
   PRIMARY KEY (`email_cliente`),
   CONSTRAINT `fbkkemailcliente` FOREIGN KEY (`email_cliente`) REFERENCES `account` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -340,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-28 14:40:14
+-- Dump completed on 2018-01-29 11:55:02
