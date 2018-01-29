@@ -28,20 +28,7 @@
 		<h1 class="title">Administration Panel</h1>
 	</header>
 
-	<!--  
-	<div id="controlMenu" class="dock">
-		<ul>
-			<li><a
-				href="javascript: retrieveTable('manage-user'); createWindow('manage-user');"><img
-					src="../images/icons/removeUserIcon.png"></a></li>
-			<li><a
-				href="javascript: retrieveTable('manage-content'); createWindow('manage-content');"><img
-					src="../images/icons/addRemoveContentIcon.png"></a></li>
-			<li><a href="javascript: createWindow('manage-review');"><img
-					src="../images/icons/removeReview.png"></a></li>
-		</ul>
-	</div>
--->
+	
 	<div class="window-container"></div>
 
 	<section id="grid-menu">
