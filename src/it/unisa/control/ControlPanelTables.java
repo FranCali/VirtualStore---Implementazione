@@ -15,9 +15,11 @@ import org.json.simple.JSONObject;
 
 import it.unisa.beans.ClientBean;
 import it.unisa.beans.ContentBean;
+import it.unisa.beans.DeletionAccountRequest;
 import it.unisa.beans.ReviewBean;
 import it.unisa.model.ClientModelDM;
 import it.unisa.model.ContentModelDM;
+import it.unisa.model.DeletionAccountRequestModelDM;
 import it.unisa.model.ReviewModelDM;
 
 /**
@@ -31,6 +33,7 @@ public class ControlPanelTables extends HttpServlet {
 	ContentModelDM contentModel = new ContentModelDM();
 	ClientModelDM clientModelDM = new ClientModelDM();
 	ReviewModelDM reviewModel = new ReviewModelDM();
+	DeletionAccountRequestModelDM accountRequestModelDM = new DeletionAccountRequestModelDM();
 
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,10 +42,38 @@ public class ControlPanelTables extends HttpServlet {
 		LinkedList<ContentBean> contents;
 		LinkedList<ClientBean> users;
 		LinkedList<ReviewBean> reviews;
+		LinkedList<DeletionAccountRequest> requests;
 
 		if (action != null) {
 			String output = null;
 			array = new JSONArray();
+			if (action.equals("createDeletionRequestsTable")) {
+				try {
+					requests = (LinkedList<DeletionAccountRequest>) accountRequestModelDM.doRetrieveAll();
+					users = (LinkedList<ClientBean>) clientModelDM.doRetriveAll("nome");
+
+					for (ClientBean client : users) {
+
+						for (DeletionAccountRequest deletionRequest : requests) {
+							if (client.getAccount().getEmail().equals(deletionRequest.getClientEmail())) {
+								obj = new JSONObject();
+								obj.put("client_name", client.getName());
+								obj.put("client_surname", client.getSurname());
+								obj.put("client_email", client.getAccount().getEmail());
+								obj.put("request_date", deletionRequest.getRequestDate());
+								
+								array.add(obj);
+							}
+						}
+
+					}
+					output = array.toJSONString();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			}
 			if (action.equals("createContentsTable")) {
 
 				try {
@@ -74,8 +105,8 @@ public class ControlPanelTables extends HttpServlet {
 						obj.put("user_name", user.getName());
 						obj.put("user_surname", user.getSurname());
 						obj.put("user_email", user.getAccount().getEmail());
-						
-						if(!clientModelDM.checkIfAdmin(user) && !clientModelDM.checkIfManager(user))
+
+						if (!clientModelDM.checkIfAdmin(user) && !clientModelDM.checkIfManager(user))
 							array.add(obj);
 					}
 					output = array.toJSONString();
@@ -118,7 +149,7 @@ public class ControlPanelTables extends HttpServlet {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			} 
+			}
 
 			if (output != null)
 				response.getWriter().write(output);

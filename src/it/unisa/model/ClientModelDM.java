@@ -196,7 +196,7 @@ public class ClientModelDM implements ClientModel {
 	}
 
 	
-	public boolean hadRequestedDeletion(ClientBean client) throws SQLException {
+	/*public boolean hadRequestedDeletion(ClientBean client) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String selectSQL = "SELECT * FROM rimozione_account WHERE email_cliente = '"+ client.getAccount().getEmail() +"';"+"";
@@ -216,8 +216,9 @@ public class ClientModelDM implements ClientModel {
 			}
 		}
 		return false;
-	}
+	}*/
 	
+	/*
 	@Override
 	public void doInsertDeleteAccountRequest(ClientBean client, String date) throws SQLException {
 		Connection connection = null;
@@ -234,6 +235,6 @@ public class ClientModelDM implements ClientModel {
 				DriverManagerConnectionPool.releaseConnection(connection);
 			}
 		}
-	}
+	}*/
 
 }

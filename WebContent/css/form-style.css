@@ -36,3 +36,11 @@ input.read-input {
 	border: 1px solid gray;
 	font-size: large;	
 }
+
+.confirm-btn {
+	background-color: green;
+	text-align: center;
+	border: 1px solid gray;
+	font-size: large;	
+	border-radius: 10%;
+}

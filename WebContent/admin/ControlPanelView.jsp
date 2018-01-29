@@ -28,7 +28,7 @@
 		<h1 class="title">Administration Panel</h1>
 	</header>
 
-<!--  
+	<!--  
 	<div id="controlMenu" class="dock">
 		<ul>
 			<li><a
@@ -44,15 +44,24 @@
 -->
 	<div class="window-container"></div>
 
-	<section id = "grid-menu">
-		<table id = "administration-panel">
+	<section id="grid-menu">
+		<table id="administration-panel">
 			<tr>
-				<td><a href = "javascript: retrieveTable('manage-deletionRequests'); createWindow('manage-content');">Account Deletion Requests</a></td>
-				<td><a href = "javascript: retrieveTable('manage-content'); createWindow('manage-content');">Add/Remove<br> Content</a></td>
+				<td><a
+					href="javascript: retrieveTable('manage-deletionRequests'); createWindow('manage-deletionRequests');">Account
+						Deletion Requests</a></td>
+				<td><a
+					href="javascript: retrieveTable('manage-content'); createWindow('manage-content');">Add/Remove<br>
+						Content
+				</a></td>
 			</tr>
 			<tr>
-				<td><a href = "javascript: retrieveTable('manage-user'); createWindow('manage-user');">Remove<br> User</a></td>
-				<td><a href = "javascript: createWindow('manage-review');">Remove Review</a></td>
+				<td><a
+					href="javascript: retrieveTable('manage-user'); createWindow('manage-user');">Remove<br>
+						User
+				</a></td>
+				<td><a href="javascript: createWindow('manage-review');">Remove
+						Review</a></td>
 			</tr>
 		</table>
 	</section>
@@ -73,6 +82,63 @@
 
 					if (elements != 'undefined') {
 
+						if (elements[0].hasOwnProperty('request_date')) {
+							table.id = "requests-table";
+							var row, headerName, headerSurname, headerEmail, headerDate, headerAction, col1, col2, col3, col4, col5;
+
+							row = document.createElement('TR');
+							headerName = document.createElement('TH');
+							headerSurname = document.createElement('TH');
+							headerEmail = document.createElement('TH');
+							headerDate = document.createElement('TH');
+							headerAction = document.createElement('TH');
+
+							headerName.innerHTML = "Name";
+							headerSurname.innerHTML = "Surname";
+							headerEmail.innerHTML = "Email";
+							headerDate.innerHTML = "Date"
+							headerAction.innerHTML = "Action";
+
+							row.appendChild(headerName);
+							row.appendChild(headerSurname);
+							row.appendChild(headerEmail);
+							row.appendChild(headerDate);
+							row.appendChild(headerAction);
+
+							table.appendChild(row);
+
+							for (i = 0; i < elements.length; i++) {
+
+								row = document.createElement('TR');
+
+								col1 = document.createElement('TD');
+								col2 = document.createElement('TD');
+								col3 = document.createElement('TD');
+								col4 = document.createElement('TD');
+								col5 = document.createElement('TD');
+
+								col1.innerHTML = elements[i].client_name;
+								col2.innerHTML = elements[i].client_surname;
+								col3.innerHTML = elements[i].client_email;
+								col4.innerHTML = elements[i].request_date;
+								col5.innerHTML = '<a href = "javascript: removeRow(\''
+										+ elements[i].client_email
+										+ '\', \'requests\');"'
+										+ ' class = \"confirm-btn\">CONFIRM</a>';
+
+								row.appendChild(col1);
+								row.appendChild(col2);
+								row.appendChild(col3);
+								row.appendChild(col4);
+								row.appendChild(col5);
+
+								table.appendChild(row);
+							}
+
+							document.getElementsByClassName('main-table')[0]
+									.appendChild(table);
+
+						}
 						if (elements[0].hasOwnProperty('user_name')) {
 
 							table.id = "users-table";
@@ -124,7 +190,6 @@
 
 							document.getElementsByClassName('main-table')[0]
 									.appendChild(table);
-							
 
 						} else if (elements[0].hasOwnProperty('content_name')) {
 
@@ -152,7 +217,6 @@
 							}
 							document.getElementsByClassName('main-table')[0]
 									.appendChild(table);
-
 
 						} else if (elements[0].hasOwnProperty('title')) {
 
@@ -215,8 +279,8 @@
 
 							}
 
-						} 
-						
+						}
+
 					}
 				}
 
@@ -227,6 +291,13 @@
 				xhttp.open("GET",
 						"../ControlPanelTables?action=createContentsTable",
 						true);
+				break;
+			case 'manage-deletionRequests':
+				xhttp
+						.open(
+								"GET",
+								"../ControlPanelTables?action=createDeletionRequestsTable",
+								true);
 				break;
 			case 'manage-user':
 				xhttp.open("GET",
@@ -252,6 +323,28 @@
 
 		function removeRow(elementId, table) {
 			var xhttp = new XMLHttpRequest();
+
+			if (table = 'requests') {
+				xhttp.onreadystatechange = function() {
+
+					if (this.readyState == 4 && this.status == 200) {
+						var email = this.responseText;
+						console.log(email);
+						var table = document.getElementById('requests-table');
+						var rows = table.childNodes;
+
+						for (k = 0; k < rows.length; k++) {
+							if (rows[k].childNodes[2].innerHTML == email) {
+								table.removeChild(table.childNodes[k]);
+							}
+						}
+					}
+				}
+				xhttp.open("GET",
+						"../AdministrationControl?action=removeRequest&email="
+								+ elementId, true);
+				xhttp.send();
+			}
 
 			if (table == 'user') {
 
@@ -330,42 +423,6 @@
 
 		}
 
-		function addCode(input, content_id) {
-
-			var code_id = input.value;
-
-			var xhttp = new XMLHttpRequest();
-
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					input.value = this.responseText;
-				}
-			}
-
-			var url = "../AdministrationControl?action=addCode&code_id="
-					+ code_id + "&content_id=" + content_id;
-			xhttp.open("GET", url, true);
-			xhttp.send();
-		}
-
-		function removeCode(input) {
-
-			var code_id = input.value;
-
-			var xhttp = new XMLHttpRequest();
-
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					input.value = this.responseText;
-				}
-			}
-
-			var url = "../AdministrationControl?action=deleteCode&code_id="
-					+ code_id;
-			xhttp.open("GET", url, true);
-			xhttp.send();
-		}
-
 		function removeReview(contentId, userEmail) {
 
 			var xhttp = new XMLHttpRequest();
@@ -400,6 +457,14 @@
 		function createWindow(window_id) {
 
 			container.id = window_id;
+
+			if (window_id == "manage-deletionRequests") {
+				container.innerHTML = '<header>'
+						+ '<h2>Account Deletion Requests</h2>'
+						+ '<a id = "closeTag" href = "javascript: closeWindow(\''
+						+ window_id + '\')">&#10006;</a>' + '</header>'
+						+ '<div class = "main-table">' + '</div>';
+			}
 
 			if (window_id == "manage-content") {
 
@@ -481,19 +546,6 @@
 			}
 
 			showWindow(window_id);
-
-		}
-
-		function addTeamChoice() {
-			var xhttp = new XMLHttpRequest();
-			var myJSON = JSON.stringify(contents);
-
-			xhttp.open("GET",
-					"../AdministrationControl?action=createTeamChoice&idList="
-							+ myJSON, true);
-			xhttp.send();
-
-			console.log(contents);
 		}
 
 		function refreshPath(value) {

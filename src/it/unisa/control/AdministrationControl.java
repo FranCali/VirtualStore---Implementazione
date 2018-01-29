@@ -12,9 +12,11 @@ import org.json.simple.JSONObject;
 
 import it.unisa.beans.ClientBean;
 import it.unisa.beans.ContentBean;
+import it.unisa.beans.DeletionAccountRequest;
 import it.unisa.beans.ReviewBean;
 import it.unisa.model.ClientModelDM;
 import it.unisa.model.ContentModelDM;
+import it.unisa.model.DeletionAccountRequestModelDM;
 import it.unisa.model.ReviewModelDM;
 
 @WebServlet("/AdministrationControl")
@@ -30,6 +32,7 @@ public class AdministrationControl extends HttpServlet {
 		ReviewModelDM reviewModel = new ReviewModelDM();
 		ClientModelDM clientModelDM = new ClientModelDM();
 		ClientBean client = (ClientBean) request.getSession().getAttribute("user");
+		DeletionAccountRequestModelDM accountRequestModelDM = new DeletionAccountRequestModelDM();
 
 		try {
 			if (client == null || !clientModelDM.checkIfAdmin(client)) {
@@ -45,6 +48,13 @@ public class AdministrationControl extends HttpServlet {
 
 			try {
 
+				if (action.equals("removeRequest")) {
+					String email = request.getParameter("email");
+					
+					if(clientModelDM.doDelete(clientModelDM.doRetriveByEmail(email)));
+						response.getWriter().write(email);
+
+				}
 				if (action.equals("addContent")) {
 
 					float price = (float) Double.parseDouble(request.getParameter("price"));
@@ -80,11 +90,11 @@ public class AdministrationControl extends HttpServlet {
 					}
 				} else if (action.equals("deleteUser")) {
 					String email = request.getParameter("email");
-					
+
 					if (clientModelDM.doDelete(clientModelDM.doRetriveByEmail(email)))
 						response.getWriter().write(email);
 				}
-				
+
 				else if (action.equals("deleteReview")) {
 					int contentId = Integer.parseInt(request.getParameter("content_id"));
 					String userEmail = request.getParameter("email");
@@ -94,7 +104,6 @@ public class AdministrationControl extends HttpServlet {
 					if (reviewModel.doDelete(review))
 						response.getWriter().write(userEmail);
 				}
-				
 
 			} catch (SQLException e) {
 				e.printStackTrace();

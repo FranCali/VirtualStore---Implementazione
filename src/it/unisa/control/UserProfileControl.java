@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import it.unisa.beans.AccountBean;
 import it.unisa.beans.ClientBean;
+import it.unisa.beans.DeletionAccountRequest;
 import it.unisa.model.AccountModelDM;
 import it.unisa.model.ClientModelDM;
+import it.unisa.model.DeletionAccountRequestModelDM;
 import it.unisa.util.Data;
 import it.unisa.util.Encryptor;
 
@@ -30,18 +32,21 @@ public class UserProfileControl extends HttpServlet {
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
 		String action = request.getParameter("action");
-
+		DeletionAccountRequestModelDM accountRequestModelDM = new DeletionAccountRequestModelDM();
+		
 		if (action != null) {
 			if (action.equals("deleteAccount")) {
 				String message = "";
 				try {
-					if (clientModelDM.hadRequestedDeletion(client))
+					if (accountRequestModelDM.doRetrieveByEmail(client.getAccount().getEmail()) != null)
 						message = "Already requested";
 					else {
 						String date = Data.creaData(LocalDateTime.now().getYear(), LocalDateTime.now().getMonthValue(),
 								LocalDateTime.now().getDayOfMonth());
-
-						clientModelDM.doInsertDeleteAccountRequest(client, date);
+						DeletionAccountRequest deletionRequest = new DeletionAccountRequest();
+						deletionRequest.setClientEmail(client.getAccount().getEmail());
+						deletionRequest.setRequestDate(date);
+						accountRequestModelDM.doInsert(deletionRequest);
 						message = "Request confirmed";
 					}
 				} catch (SQLException e) {
