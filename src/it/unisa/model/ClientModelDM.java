@@ -223,7 +223,6 @@ public class ClientModelDM implements ClientModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		String insertSQL = "INSERT INTO rimozione_account (email_cliente, data_richiesta) values('" + client.getAccount().getEmail() + "', '" + date + "');";
-		System.out.println(insertSQL);
 		try {
 			connection = (Connection) DriverManagerConnectionPool.getConnection();
 			connection.createStatement().execute(insertSQL);
