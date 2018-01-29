@@ -75,7 +75,7 @@ public class ControlPanelTables extends HttpServlet {
 						obj.put("user_surname", user.getSurname());
 						obj.put("user_email", user.getAccount().getEmail());
 						
-						if(!clientModelDM.checkIfAdmin(user))
+						if(!clientModelDM.checkIfAdmin(user) && !clientModelDM.checkIfManager(user))
 							array.add(obj);
 					}
 					output = array.toJSONString();
