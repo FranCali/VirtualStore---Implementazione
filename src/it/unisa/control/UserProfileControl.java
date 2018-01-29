@@ -15,7 +15,6 @@ import it.unisa.beans.AccountBean;
 import it.unisa.beans.ClientBean;
 import it.unisa.beans.DeletionAccountRequest;
 import it.unisa.model.AccountModelDM;
-import it.unisa.model.ClientModelDM;
 import it.unisa.model.DeletionAccountRequestModelDM;
 import it.unisa.util.Data;
 import it.unisa.util.Encryptor;
@@ -28,7 +27,6 @@ public class UserProfileControl extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		ClientModelDM clientModelDM = new ClientModelDM();
 		ClientBean client = (ClientBean) session.getAttribute("user");
 		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/UserProfileView.jsp");
 		String action = request.getParameter("action");

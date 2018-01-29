@@ -12,11 +12,9 @@ import org.json.simple.JSONObject;
 
 import it.unisa.beans.ClientBean;
 import it.unisa.beans.ContentBean;
-import it.unisa.beans.DeletionAccountRequest;
 import it.unisa.beans.ReviewBean;
 import it.unisa.model.ClientModelDM;
 import it.unisa.model.ContentModelDM;
-import it.unisa.model.DeletionAccountRequestModelDM;
 import it.unisa.model.ReviewModelDM;
 
 @WebServlet("/AdministrationControl")
@@ -32,7 +30,6 @@ public class AdministrationControl extends HttpServlet {
 		ReviewModelDM reviewModel = new ReviewModelDM();
 		ClientModelDM clientModelDM = new ClientModelDM();
 		ClientBean client = (ClientBean) request.getSession().getAttribute("user");
-		DeletionAccountRequestModelDM accountRequestModelDM = new DeletionAccountRequestModelDM();
 
 		try {
 			if (client == null || !clientModelDM.checkIfAdmin(client)) {
