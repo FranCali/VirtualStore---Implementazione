@@ -127,7 +127,6 @@
 
 						}
 						if (elements[0].hasOwnProperty('user_name')) {
-
 							table.id = "users-table";
 
 							var row, headerName, headerSurname, headerEmail, headerAction, col1, col2, col3, col4;
@@ -311,12 +310,11 @@
 		function removeRow(elementId, table) {
 			var xhttp = new XMLHttpRequest();
 
-			if (table = 'requests') {
+			if (table == 'requests') {
 				xhttp.onreadystatechange = function() {
 
 					if (this.readyState == 4 && this.status == 200) {
 						var email = this.responseText;
-						console.log(email);
 						var table = document.getElementById('requests-table');
 						var rows = table.childNodes;
 
