@@ -68,14 +68,14 @@ section.topContent {
 	background-position: center;
 	background-size: 13%;
 	width: 100%;
-	height:43%;
+	height:50%;
 	margin-top: 8%;
 	margin-bottom: 5%;
 }
 
 section.topContent #leftPanel{
 	float: left;
-	height: 100%;
+	height: 80%;
 	width: 60%;
 }
 
@@ -83,7 +83,7 @@ section.topContent #rightPanel{
 
 	overflow: hidden;
 	float:left;
-	height: 100%;
+	height: 85%;
 	width: 40%;
 	
 }
@@ -589,7 +589,7 @@ div#remove-wrapper:HOVER #removeFromList{
 		width: 20%;
 	}
 	section.topContent {
-		height:28%;
+		height:50%;
 	}
 	
 	section.content-view img{	
