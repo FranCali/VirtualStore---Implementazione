@@ -26,7 +26,7 @@ CREATE TABLE `account` (
   `email` varchar(50) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `idcliente` int(11) NOT NULL,
-  PRIMARY KEY (`email`,`idcliente`),
+  PRIMARY KEY (`email`),
   KEY `idcliente_idx` (`idcliente`),
   CONSTRAINT `account_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -341,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-30 13:25:58
+-- Dump completed on 2018-01-30 13:47:05
