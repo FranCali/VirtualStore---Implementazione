@@ -33,7 +33,6 @@ public class AdministrationControl extends HttpServlet {
 
 		try {
 			if (client == null || (!clientModelDM.checkIfAdmin(client) && !clientModelDM.checkIfManager(client))) {
-				System.err.println("problema");
 				return;
 			}
 		} catch (SQLException e1) {

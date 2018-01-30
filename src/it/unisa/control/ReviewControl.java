@@ -42,7 +42,6 @@ public class ReviewControl extends HttpServlet {
 				if (title.length() > 4 && title.length() < 20 && description.length() > 20) {
 
 					ReviewBean review = new ReviewBean();
-					System.out.println(description);
 					review.setContent_id(id);
 					review.setTitle(title);
 					review.setDescription(description);
