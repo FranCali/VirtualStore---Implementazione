@@ -32,7 +32,8 @@ public class AdministrationControl extends HttpServlet {
 		ClientBean client = (ClientBean) request.getSession().getAttribute("user");
 
 		try {
-			if (client == null || !clientModelDM.checkIfAdmin(client)) {
+			if (client == null || (!clientModelDM.checkIfAdmin(client) && !clientModelDM.checkIfManager(client))) {
+				System.err.println("problema");
 				return;
 			}
 		} catch (SQLException e1) {
@@ -87,7 +88,7 @@ public class AdministrationControl extends HttpServlet {
 					}
 				} else if (action.equals("deleteUser")) {
 					String email = request.getParameter("email");
-
+					System.out.println("sto nel metodo");
 					if (clientModelDM.doDelete(clientModelDM.doRetriveByEmail(email)))
 						response.getWriter().write(email);
 				}
