@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: storedb
+-- Host: localhost    Database: storedb
 -- ------------------------------------------------------
--- Server version	5.7.18-log
+-- Server version	5.7.19-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -268,7 +268,7 @@ CREATE TABLE `rimozione_account` (
   `email_cliente` varchar(50) NOT NULL,
   `data_richiesta` date DEFAULT NULL,
   PRIMARY KEY (`email_cliente`),
-  CONSTRAINT `fbkkemailcliente` FOREIGN KEY (`email_cliente`) REFERENCES `account` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fbkkemailcliente` FOREIGN KEY (`email_cliente`) REFERENCES `account` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -341,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-30 13:47:05
+-- Dump completed on 2018-01-30 16:38:16
