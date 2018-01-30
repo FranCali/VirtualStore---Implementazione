@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `email` varchar(50) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `idcliente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`email`),
+  `idcliente` int(11) NOT NULL,
+  PRIMARY KEY (`email`,`idcliente`),
   KEY `idcliente_idx` (`idcliente`),
   CONSTRAINT `account_ibfk_1` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -227,4 +227,4 @@ CREATE TABLE `scarica` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-29 11:55:19
+-- Dump completed on 2018-01-30 13:27:07

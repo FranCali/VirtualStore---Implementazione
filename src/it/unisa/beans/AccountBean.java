@@ -15,7 +15,6 @@ public class AccountBean {
 	}
 	
 	public AccountBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public AccountBean(String email, String password) {
