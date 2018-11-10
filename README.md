@@ -1,7 +1,7 @@
 # VirtualStore---Implementazione
 Implementazione di VirtualStore
 
--Clone prgect (from bash):
+-Clone project (from bash):
 git clone https://github.com/DomenicoM92/VirtualStore---Implementazione.git
 
 -Import project into Eclipse:
